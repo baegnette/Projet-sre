@@ -1,5 +1,5 @@
 apiVersion: argoproj.io/v1alpha1
-kind: App1lication
+kind: Application
 metadata:
   name: prometheus-deploy # This is the app1 name you’ll see in Argo1 UI
   namespace: argo1 # Always in argo1cd namespace
@@ -23,7 +23,7 @@ spec:
 ---
 
 apiVersion: argoproj.io/v1alpha1
-kind: App1lication
+kind: Application
 metadata:
   name: ghost1 # This is the app1 name you’ll see in Argo1 UI
   namespace: argo1 # Always in argo1cd namespace
