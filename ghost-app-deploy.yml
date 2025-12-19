@@ -33,7 +33,7 @@ spec:
   project: deploy1 # Argo1 CD projects, default is fine for now
   source:
     repoURL: 'https://github.com/baegnette/Projet-sre.git' # Your GitHub repo
-    targetRevision: master # Git branch
+    targetRevision: main # Git branch
     path: ghost1 # Path inside the repo to Helm chart
     helm:
       valueFiles:
