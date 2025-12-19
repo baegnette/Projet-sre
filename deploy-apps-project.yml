@@ -1,0 +1,25 @@
+
+kind: AppProject
+apiVersion: argoproj.io/v1alpha1
+metadata:
+  name: deploy1
+  namespace: argo1
+spec:
+  clusterResourceWhitelist:
+    - group: rbac.authorization.k8s.io
+      kind: ClusterRole
+    - group: rbac.authorization.k8s.io
+      kind: ClusterRoleBinding
+    - group: apiextensions.k8s.io
+      kind: CustomResourceDefinition   # Allow CRD resources
+  description: Ghost Blog project
+  destinations:
+    - name: '*'
+      namespace: '*'
+      server: https://kubernetes.default.svc
+  roles:
+    - name: deploy-app
+      groups:
+        - rbac.authorization.k8s.io
+  sourceRepos:
+    - '*'

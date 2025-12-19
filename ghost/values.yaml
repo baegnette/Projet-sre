@@ -128,7 +128,7 @@ ghostEmail: user@example.com
 ghostBlogTitle: User's Blog
 ## @param ghostHost Ghost host to create application URLs
 ##
-ghostHost: "devopstraining.ddns.com"
+ghostHost: "adoudevops.ddns.net"
 ## @param ghostPath URL sub path where to server the Ghost application
 ##
 ghostPath: /

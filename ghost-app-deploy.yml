@@ -1,0 +1,49 @@
+apiVersion: argoproj.io/v1alpha1
+kind: App1lication
+metadata:
+  name: prometheus-deploy # This is the app1 name you’ll see in Argo1 UI
+  namespace: argo1 # Always in argo1cd namespace
+spec:
+  project: deploy1 # Argo1 CD projects, default is fine for now
+  source:
+    repoURL: 'https://github.com/baegnette/Projet-sre.git' # Your GitHub repo
+    targetRevision: main # Git branch
+    path: prometheus # Path inside the repo to Helm chart
+    helm:
+      valueFiles:
+        - values.yaml # You can specify custom values files
+  destination:
+    server: https://kubernetes.default.svc # Your cluster
+    namespace: app1 # Namespace to deploy
+  syncPolicy:
+    automated:
+      prune: true    # Remove resources if they are deleted from Git
+      selfHeal: true # Fix resources if manually changed in the cluster
+
+---
+
+apiVersion: argoproj.io/v1alpha1
+kind: App1lication
+metadata:
+  name: ghost1 # This is the app1 name you’ll see in Argo1 UI
+  namespace: argo1 # Always in argo1cd namespace
+  annotations:
+    argo1cd.argo1proj.io/sync-wave: "1" # Higher sync wave
+spec:
+  project: deploy1 # Argo1 CD projects, default is fine for now
+  source:
+    repoURL: 'https://github.com/baegnette/Projet-sre.git' # Your GitHub repo
+    targetRevision: master # Git branch
+    path: ghost1 # Path inside the repo to Helm chart
+    helm:
+      valueFiles:
+        - values.yaml # You can specify custom values files
+  destination:
+    server: https://kubernetes.default.svc # Your cluster
+    namespace: app11H # Namespace to deploy
+  syncPolicy:
+    automated:
+      prune: true    # Remove resources if they are deleted from Git
+      selfHeal: true # Fix resources if manually changed in the cluster
+      
+---
